@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel="stylesheet" href="/stylesheets/common.css">
+</head>
+<body>
+<nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>公交查询系统</h1>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" <%if(current == 0) { %>class="active"<% } %>><a href="/">换乘查询</a></li>
+                    <li role="presentation" <%if(current == 1) { %>class="active"<% } %>><a href="/busroutes">路线查询</a></li>
+                    <li role="presentation" <%if(current == 2) { %>class="active"<% } %>><a href="/busstop">站点查询</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<form action="/" method="post">
