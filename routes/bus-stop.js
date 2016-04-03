@@ -6,20 +6,24 @@ router.get('/',function(req, res){
         title: '站点查询',
         current: 2,
         busStop: req.flash('busStop'),
-        rows: req.flash('rows'),
+        result: req.flash('result'),
         error: req.flash('error')
     });
 });
 router.post('/',function(req, res){
     var busStop = req.body['bus-stop'];
-    query.select(busStop, function(rows){
+    query.selectStop(busStop, function(rows){
         if(rows.length > 0){
-            req.flash('rows', rows);
+            query.selectStartEndStop(rows,function(result){
+                req.flash('result', result);
+                res.redirect('/busstop');
+            });
             req.flash('busStop',busStop);
         }else{
             req.flash('error','未查询到此站点！');
+            res.redirect('/busstop');
         }
-        res.redirect('/busstop');
+
     });
 });
 

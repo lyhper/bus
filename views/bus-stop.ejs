@@ -4,9 +4,7 @@
     <div class="row">
         <form action="/busstop" method="post">
         <div class="col-md-6 col-md-offset-3">
-            <div class="input-wrap">
-                <input type="text" name="bus-stop" class="no-border input-large" <%if(busStop.length>0){%>value="<%= busStop %>"<%}%>placeholder="公交站名称，如&quot; 西北大学南校区&quot; ">
-            </div>
+            <input type="text" name="bus-stop" class="form-control" <%if(busStop.length>0){%>value="<%= busStop %>"<%}%> placeholder="公交站名称，如&quot; 西北大学南校区&quot; ">
         </div>
         <div class="col-md-6 col-md-offset-3">
             <input type="submit" class="btn btn-primary query" value="查询">
@@ -22,10 +20,13 @@
             <% if(error.length > 0){ %>
                 <h3><%= error.toString() %></h3>
             <% } %>
-            <% if(rows.length > 0){ %>
+            <% if(result.length > 0){ %>
             <ul class="list-group">
-                <% rows.forEach(function(row){ %>
-                <li class="list-group-item"><%= row.route_name %></li>
+                <% result.forEach(function(data){ %>
+                <li class="list-group-item">
+                    <div><%= data.routeName %></div>
+                    <span><%= data.startStop %> - <%= data.endStop %></span>
+                </li>
                 <% }); %>
             </ul>
             <% } %>
