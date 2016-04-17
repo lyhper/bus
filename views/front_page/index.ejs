@@ -1,0 +1,80 @@
+<%- include header%>
+
+<link rel="stylesheet" href="/stylesheets/index.css">
+<div class="container">
+  <div class="row">
+    <form action="/" method="post" class="form-inline">
+    <div class="col-md-6 col-md-offset-3">
+      <input type="text" name="start-stop" class="form-control input-stop" <%if(startStop.length>0){%>value="<%= startStop %>"<%}%> placeholder="请输入起点">
+      <span class="glyphicon glyphicon-transfer transfer" aria-hidden="true"></span>
+      <input type="text" name="end-stop" class="form-control input-stop" <%if(endStop.length>0){%>value="<%= endStop %>"<%}%> placeholder="请输入终点">
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <input type="submit" class="btn btn-primary query" value="查询">
+    </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <% if(transferZeroTime.length > 0){ %>
+      <h4>直达方案：</h4>
+      <ul class="list-group">
+        <% transferZeroTime.forEach(function(transferMethod){ %>
+        <li class="list-group-item">
+          <div><%= transferMethod %>路</div>
+          <div>
+            <div><span class="label label-info">上车</span>：<em><%= startStop %></em></div>
+            <div><span class="label label-info">下车</span>：<em><%= endStop %></em></div>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+      <% } %>
+      <% if(transferOneTime.length > 0){ %>
+      <h4>无直达方案，换乘方案为：</h4>
+      <ul class="list-group">
+        <% transferOneTime.forEach(function(transferMethod){ %>
+        <li class="list-group-item">
+            <div>
+              <div><span class="label label-info">上车</span>：<em><%= startStop %></em></div>
+              <span class="transfer-route">乘坐<%= transferMethod.firstBus %>路</span>
+            </div>
+
+            <div>
+              <div><span class="label label-danger">换乘</span>：<em><%= transferMethod.transferStop %></em></div>
+              <span class="transfer-route">乘坐<%= transferMethod.secondBus %>路</span>
+            </div>
+            <div><span class="label label-info">下车</span>：<em><%= endStop %></em></div>
+        </li>
+        <% }); %>
+      </ul>
+      <% } %>
+
+      <% if(transferTwoTime.length > 0){ %>
+      <h4>无直达方案，换乘方案为：</h4>
+      <ul class="list-group">
+        <% transferTwoTime.forEach(function(transferMethod){ %>
+        <li class="list-group-item">
+          <div>
+            <div><span class="label label-info">上车</span>：<em><%= startStop %></em></div>
+            <span class="transfer-route">乘坐<%= transferMethod.firstBus %>路</span>
+          </div>
+
+          <div>
+            <div><span class="label label-danger">换乘</span>：<em><%= transferMethod.transferFirstStop %></em></div>
+            <span class="transfer-route">乘坐<%= transferMethod.secondBus %>路</span>
+          </div>
+          <div>
+            <div><span class="label label-danger">换乘</span>：<em><%= transferMethod.transferSecondStop %></em></div>
+            <span class="transfer-route">乘坐<%= transferMethod.thirdBus %>路</span>
+          </div>
+          <div><span class="label label-info">下车</span>：<em><%= endStop %></em></div>
+        </li>
+        <% }); %>
+      </ul>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include footer%>

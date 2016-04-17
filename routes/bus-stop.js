@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var query = require('../model/query');
 router.get('/',function(req, res){
-    res.render('bus-stop',{
+    res.render('front_page/bus-stop',{
         title: '站点查询',
         current: 2,
         busStop: req.flash('busStop'),

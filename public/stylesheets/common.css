@@ -1,9 +1,18 @@
 body{
     font-family: "microsoft yahei";
 }
-nav{
-    margin-bottom:20px;
+.tabs{
+    margin-bottom: 20px;
+}
+.navbar-nomargin{
+    margin-bottom: 0;
+}
+.logo{
+    height: 100px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    background: url("../images/logo.png") no-repeat center center;
 }
 .query{
-    margin-top: 10px;
+    margin-top: 20px;
 }

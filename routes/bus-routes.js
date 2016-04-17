@@ -7,7 +7,7 @@ var router = express.Router();
 var query = require('../model/query');
 
 router.get('/',function(req, res){
-   res.render('bus-routes',{
+   res.render('front_page/bus-routes',{
        title: '路线查询',
        current: 1,
        error: req.flash('error'),
