@@ -1,0 +1,77 @@
+<%- include header %>
+<%- include breadcrumb %>
+
+<div class="am-g" id="routes-data">
+	<div class="am-u-sm-12">
+		<table id="vue-table" class="am-table am-table-bd am-table-striped admin-content-table">
+			<thead>
+			<tr>
+				<th>序号</th><th>线路名</th><th>起点</th><th>终点</th><th>管理</th>
+			</tr>
+			</thead>
+			<tbody id="tbody">
+			<% routes.forEach(function(route, index){ %>
+			<tr><td><%= index+1 %></td><td id="row-route-<%= route.name %>"><%= route.name %></td><td><%= route.start %></td> <td><%= route.end %></td>
+				<td>
+					<div class="am-dropdown" data-am-dropdown>
+						<button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+						<ul class="am-dropdown-content">
+							<li><a href="#"  class="prompt-toggle" data-route="<%= route.name %>">1. 修改</a></li>
+							<li><a href="routemanage/routeedit?id=<%= route.name %>">2. 编辑站点</a></li>
+							<li><a href="routemanage/del?id=<%= route.name %>">3. 删除</a></li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+			<%})%>
+			</tbody>
+		</table>
+		<button type="button" class="am-btn am-btn-primary prompt-toggle-add" style="margin-bottom: 20px">新增线路</button>
+	</div>
+</div>
+
+<!-- modify Modal -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">修改线路名</div>
+		<div class="am-modal-bd">
+			<span id="am-modal-prompt-desc"><!--放置需要修改的线路名--></span>
+			<input type="text" class="am-modal-prompt-input" placeholder="请输入新线路名">
+		</div>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+			<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+		</div>
+	</div>
+</div>
+<!-- Modal end -->
+
+<!-- add Modal -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt-add">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">新增线路</div>
+		<div class="am-modal-bd">
+			<input type="text" class="am-modal-prompt-input" placeholder="请输入线路名">
+		</div>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+			<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+		</div>
+	</div>
+</div>
+<!-- Modal end -->
+
+
+<!-- loading modal-->
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">正在提交...</div>
+		<div class="am-modal-bd">
+			<span class="am-icon-spinner am-icon-spin"></span>
+		</div>
+	</div>
+</div>
+<!-- loading modal end -->
+<!-- content end -->
+<%- include footer %>
+<script src="/javascripts/require.js" data-main="/javascripts/routeManage.js"></script>

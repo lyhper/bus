@@ -28,8 +28,7 @@ router.post('/',function(req, res){
             return res.redirect('/login');
         }
         req.session.admin = admin;
-        res.redirect('/admin');
-        console.log(req.session.admin);
+        res.redirect('back');
     });
 });
 

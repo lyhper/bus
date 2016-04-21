@@ -3,14 +3,14 @@ module.exports = {
     checkLogin:function(req, res, next){
         if(!req.session.admin){
             req.flash('error','请登录！');
-            res.redirect('/login');
+            return res.redirect('/login');
         }
         next();
     },
     // 登录页使用，判断是否未登录，如果已登录，跳转回管理页
     checkNotLogin:function(req, res, next){
         if(req.session.admin){
-            res.redirect('/admin');
+            return res.redirect('/admin');
         }
         next();
     }

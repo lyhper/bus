@@ -36,22 +36,33 @@
 		<div class="am-offcanvas-bar admin-offcanvas-bar" style="overflow-y:hidden">
 			<ul class="am-list admin-sidebar-list">
 				<li><a href="/admin"><span class="am-icon-home"></span> 首页</a></li>
-				<li class="admin-parent">
-					<a class="am-cf" data-am-collapse="{target: '#collapse-nav-routes'}"><span class="am-icon-file"></span> 公交线路 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-					<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav-routes">
-						<li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 新增线路</a></li>
-						<li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 管理线路</a></li>
-					</ul>
-				</li>
-				<li class="admin-parent">
-					<a  class="am-cf" data-am-collapse="{target: '#collapse-nav-stops'}"><span class="am-icon-table"></span> 公交站点 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-					<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav-stops">
-						<li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 新增站点</a></li>
-						<li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 管理站点</a></li>
-					</ul>
-				</li>
+				<li><a href="/routemanage"><span class="am-icon-table"></span> 管理线路</a></li>
+				<li><a href="/stopmanage"><span class="am-icon-puzzle-piece"></span> 管理站点</a></li>
+				<!--<li class="admin-parent">-->
+					<!--<a class="am-cf" data-am-collapse="{target: '#collapse-nav-routes'}"><span class="am-icon-file"></span> 公交线路 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>-->
+					<!--<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav-routes">-->
+						<!--<li><a href="/routeadd" class="am-cf"><span class="am-icon-check"></span> 新增线路</a></li>-->
+						<!--<li><a href="/routemanage"><span class="am-icon-puzzle-piece"></span> 管理线路</a></li>-->
+					<!--</ul>-->
+				<!--</li>-->
+				<!--<li class="admin-parent">-->
+					<!--<a  class="am-cf" data-am-collapse="{target: '#collapse-nav-stops'}"><span class="am-icon-table"></span> 公交站点 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>-->
+					<!--<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav-stops">-->
+						<!--<li><a href="/stopadd" class="am-cf"><span class="am-icon-check"></span> 新增站点</a></li>-->
+						<!--<li><a href="/stopmanage"><span class="am-icon-puzzle-piece"></span> 管理站点</a></li>-->
+					<!--</ul>-->
+				<!--</li>-->
 				<li><a href="/logout"><span class="am-icon-sign-out"></span> 注销</a></li>
 			</ul>
+			<div class="am-panel am-panel-default admin-sidebar-panel">
+				<div class="am-panel-bd">
+					<p><span class="am-icon-tag"></span> Welcome</p>
+					<p>欢迎使用公交查询系统^_^</p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- sidebar end -->
+	<!-- content start -->
+	<div class="admin-content">
+		<div class="admin-content-body">

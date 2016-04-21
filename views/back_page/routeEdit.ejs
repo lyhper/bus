@@ -1,0 +1,95 @@
+<%- include header %>
+<%- include breadcrumb %>
+<div class="am-g"  id="stops-data">
+	<div class="am-u-sm-12">
+		<table class="am-table am-table-bd am-table-striped admin-content-table">
+			<thead>
+			<tr>
+				<th>序号</th><th>站点名</th><th>管理</th>
+			</tr>
+			</thead>
+			<tbody>
+			<% stops.forEach(function(stop, index){ %>
+			<tr><td id="row-stop-order-<%= stop.route_stop_order%>"><%= stop.route_stop_order %></td><td  id="row-stop-<%= stop.stop_name %>"><%= stop.stop_name %></td>
+				<td>
+					<div class="am-dropdown" data-am-dropdown>
+						<button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+						<ul class="am-dropdown-content">
+							<li><a href="#" class="prompt-toggle" data-stop="<%= stop.stop_name %>">1. 修改站名</a></li>
+							<li><a href="#" class="prompt-toggle-order" data-route="<%= route %>" data-stop="<%= stop.stop_name %>" data-order="<%= stop.route_stop_order %>">2. 修改序号</a></li>
+							<li><a href="/stopmanage/delroutestop?stop=<%= stop.stop_name %>&route=<%= route %>">3. 删除</a></li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+			<%})%>
+			</tbody>
+		</table>
+		<button type="button" class="am-btn am-btn-primary prompt-toggle-add" style="margin-bottom: 20px">新增站点</button>
+	</div>
+</div>
+<!-- content end -->
+<!-- Modal -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">修改站名</div>
+		<div class="am-modal-bd">
+			<span id="am-modal-prompt-desc"><!--放置需要修改的站名--></span>
+			<input type="text" class="am-modal-prompt-input" placeholder="请输入新站名">
+		</div>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+			<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+		</div>
+	</div>
+</div>
+<!-- Modal end -->
+<!-- Modal order -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt-order">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">修改序号</div>
+		<div class="am-modal-bd">
+			<span id="am-modal-prompt-order"><!--放置需要修改的序号--></span>
+			<input type="text" class="am-modal-prompt-input" placeholder="请输入新序号">
+		</div>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+			<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+		</div>
+	</div>
+</div>
+<!-- Modal end -->
+
+<!-- add Modal -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt-add">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">新增站点</div>
+		<div class="am-modal-bd">
+			<input type="text" class="am-modal-prompt-input" placeholder="请输入站名">
+			<input type="text" class="am-modal-prompt-input" placeholder="请输入序号">
+		</div>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+			<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+		</div>
+	</div>
+</div>
+<!-- Modal end -->
+
+
+<!-- loading modal-->
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">正在提交...</div>
+		<div class="am-modal-bd">
+			<span class="am-icon-spinner am-icon-spin"></span>
+		</div>
+	</div>
+</div>
+<!-- loading modal end -->
+
+<%- include footer %>
+<script>
+	var routeName = <%= route %>;
+</script>
+<script src="/javascripts/require.js" data-main="/javascripts/routeEdit.js"></script>

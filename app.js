@@ -13,6 +13,8 @@ var busRoutes = require('./routes/bus-routes');
 var login = require('./routes/back_page/login');
 var admin = require('./routes/back_page/index');
 var logout = require('./routes/back_page/logout');
+var routeManage = require('./routes/back_page/routeManage');
+var stopManage = require('./routes/back_page/stopManage');
 
 var app = express();
 
@@ -42,6 +44,8 @@ app.use('/busroutes',busRoutes);
 app.use('/login',login);
 app.use('/admin', admin);
 app.use('/logout', logout);
+app.use('/routemanage', routeManage);
+app.use('/stopmanage', stopManage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,57 @@
+<%- include header %>
+<%- include breadcrumb %>
+<div class="am-g"  id="stops-data">
+	<div class="am-u-sm-12">
+		<table class="am-table am-table-bd am-table-striped admin-content-table">
+			<thead>
+			<tr>
+				<th>序号</th><th>站点名</th><th>管理</th>
+			</tr>
+			</thead>
+			<tbody>
+			<% stops.forEach(function(stop, index){ %>
+			<tr><td><%= index+1 %></td><td  id="row-stop-<%= stop %>"><%= stop %></td>
+				<td>
+					<div class="am-dropdown" data-am-dropdown>
+						<button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+						<ul class="am-dropdown-content">
+							<li><a href="#" class="prompt-toggle" data-stop="<%= stop %>">1. 修改</a></li>
+							<li><a href="stopmanage/del?id=<%= stop %>">2. 删除</a></li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+			<%})%>
+			</tbody>
+		</table>
+	</div>
+</div>
+<!-- content end -->
+<!-- Modal -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">修改站名</div>
+		<div class="am-modal-bd">
+			<span id="am-modal-prompt-desc"><!--放置需要修改的站名--></span>
+			<input type="text" class="am-modal-prompt-input" placeholder="请输入新站名">
+		</div>
+		<div class="am-modal-footer">
+			<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+			<span class="am-modal-btn" data-am-modal-confirm>提交</span>
+		</div>
+	</div>
+</div>
+<!-- Modal end -->
+<!-- loading modal-->
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+	<div class="am-modal-dialog">
+		<div class="am-modal-hd">正在提交...</div>
+		<div class="am-modal-bd">
+			<span class="am-icon-spinner am-icon-spin"></span>
+		</div>
+	</div>
+</div>
+<!-- loading modal end -->
+
+<%- include footer %>
+<script src="/javascripts/require.js" data-main="/javascripts/stopManage.js"></script>
